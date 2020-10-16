@@ -3,9 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rock Paper Scissors</title>
 </head>
 <body>
-    
+    <script>
+        function computerPlay() {
+            let availablePlays = ['Rock', 'Paper', 'Scissors'];
+            return availablePlays[Math.floor(Math.random() * availablePlays.length)];
+        }
+
+        /* function playRound(playerSelection, computerSelection) {
+            let playerSelect = playerSelection.toLowerCase();
+            if (playerSelect !== 'rock' && playerSelect !== 'paper' && playerSelect !== 'scissors') {
+                return 'You must enter a valid option (rock, paper or scissors)';
+            }
+            let computerSelect = computerSelection.toLowerCase();
+            if (playerSelect === computerSelect) {
+                return 'Tied game';
+            } else if (playerSelect === 'rock') {
+                if (computerSelect === 'paper') {
+                    return 'You lose! Paper beats Rock';                    
+                } else {
+                    return 'You win! Rock beats Scissors';
+                }
+            } else if (playerSelect === 'paper') {
+                if (computerSelect === 'rock') {
+                    return 'You win! Paper beats Rock';                    
+                } else {
+                    return 'You lose! Scissors beat Paper';
+                }
+            } else {
+                if (computerSelect === 'rock') {
+                    return 'You lose! Rock beats Scissors';                    
+                } else {
+                    return 'You win! Scissors beat Paper';
+                }
+            }
+        } */
+
+        function playRound(playerSelection, computerSelection) {
+            let playerSelect = playerSelection.toLowerCase();
+            if (playerSelect !== 'rock' && playerSelect !== 'paper' && playerSelect !== 'scissors') {
+                return 'You must enter a valid option (rock, paper or scissors)';
+            }
+            let computerSelect = computerSelection.toLowerCase();
+            if (playerSelect === computerSelect) {
+                return 'T';
+            } else if (playerSelect === 'rock') {
+                if (computerSelect === 'paper') {
+                    return 'L';                    
+                } else {
+                    return 'W';
+                }
+            } else if (playerSelect === 'paper') {
+                if (computerSelect === 'rock') {
+                    return 'W';                    
+                } else {
+                    return 'L';
+                }
+            } else {
+                if (computerSelect === 'rock') {
+                    return 'L';                    
+                } else {
+                    return 'W';
+                }
+            }
+        }
+
+
+        function game() {
+            let playerCount = 0;
+            let computerCount = 0;
+            for (let i = 1; i < 6; i++) {
+                let player = prompt('Please, enter your choice (Rock, Paper or Scissors): ');
+                let computer = computerPlay();
+                let result = playRound(player, computer);
+                if (result === 'W') {
+                    console.log('You win round number ' + i);
+                    playerCount++;
+                } else if (result === 'T') {
+                    console.log("Round number " + i + " is a tie.");
+                } else if (result === 'L') {
+                    console.log('You loose round number ' + i);
+                    computerCount++;
+                }
+            }
+            console.log('Final result is Computer ' + computerCount + ' points and You ' + playerCount + ' points.');
+        }
+
+    </script>
 </body>
 </html>
